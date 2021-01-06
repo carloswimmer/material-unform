@@ -1,22 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback } from "react";
+import { Button } from "@material-ui/core";
+import { Form } from "@unform/web";
+import "./App.css";
+
+import MuiTextField from "./components/Form/MuiTextField";
+
+const initialData = {
+  email: "carlos@gmail.com",
+};
 
 function App() {
+  const handleSubmit = useCallback((data) => {
+    console.log(data);
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <h1>Material + Unformn</h1>
+        <Form
+          initialData={initialData}
+          onSubmit={handleSubmit}
+          style={{ width: 350 }}
         >
-          Learn React
-        </a>
+          <MuiTextField name="email" label="Email" />
+          <MuiTextField type="password" name="password" label="Senha" />
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            style={{ backgroundColor: "#ff6d00" }}
+            size="large"
+          >
+            Submit
+          </Button>
+        </Form>
       </header>
     </div>
   );
