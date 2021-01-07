@@ -13,8 +13,6 @@ const MuiTextField = ({ name, label, ...rest }) => {
       ref: inputRef.current,
       path: "value",
     });
-
-    console.log(inputRef.current);
   }, [fieldName, registerField]);
 
   return (
@@ -26,6 +24,7 @@ const MuiTextField = ({ name, label, ...rest }) => {
       fullWidth
       style={{ marginBottom: 24 }}
       error={!!error}
+      helperText={error}
       {...rest}
     />
   );
